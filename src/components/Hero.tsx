@@ -1,7 +1,22 @@
-import React from 'react';
-import { Upload, Camera, ArrowRight } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Upload, Camera, ArrowRight, Sparkles, Zap, Shield } from 'lucide-react';
 
 const Hero: React.FC = () => {
+  const [currentFeature, setCurrentFeature] = useState(0);
+
+  const features = [
+    { icon: Upload, text: "Upload any product image", color: "from-blue-500 to-blue-600" },
+    { icon: Sparkles, text: "AI analyzes ingredients instantly", color: "from-purple-500 to-purple-600" },
+    { icon: Shield, text: "Get safety ratings & insights", color: "from-green-500 to-green-600" }
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentFeature((prev) => (prev + 1) % features.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
   const handleCTAClick = () => {
     window.location.href = 'https://app--product-insight-ai-3cb8ce23.base44.app';
   };
@@ -24,7 +39,47 @@ const Hero: React.FC = () => {
             Upload product images to get detailed insights, safety ratings, and ingredient analysis.
           </p>
 
-          {/* Main CTA Buttons - Better aligned */}
+          {/* Interactive Feature Showcase */}
+          <div className="mb-12 animate-fade-in-delay">
+            <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-2xl p-8 max-w-2xl mx-auto border border-gray-200 dark:border-gray-700 shadow-xl">
+              <div className="flex items-center justify-center space-x-4 mb-6">
+                {features.map((feature, index) => {
+                  const IconComponent = feature.icon;
+                  return (
+                    <div
+                      key={index}
+                      className={`w-16 h-16 rounded-2xl flex items-center justify-center transition-all duration-500 ${
+                        index === currentFeature
+                          ? `bg-gradient-to-r ${feature.color} scale-110 shadow-lg`
+                          : 'bg-gray-200 dark:bg-gray-700 scale-90'
+                      }`}
+                    >
+                      <IconComponent 
+                        className={`w-8 h-8 transition-colors duration-500 ${
+                          index === currentFeature ? 'text-white' : 'text-gray-500 dark:text-gray-400'
+                        }`} 
+                      />
+                    </div>
+                  );
+                })}
+              </div>
+              <p className="text-lg font-medium text-gray-800 dark:text-gray-200 transition-all duration-500">
+                {features[currentFeature].text}
+              </p>
+              <div className="flex justify-center mt-4 space-x-2">
+                {features.map((_, index) => (
+                  <div
+                    key={index}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      index === currentFeature ? 'bg-blue-600 w-8' : 'bg-gray-300 dark:bg-gray-600'
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Main CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8 animate-fade-in-delay-2">
             <button 
               onClick={handleCTAClick}
@@ -43,45 +98,31 @@ const Hero: React.FC = () => {
             </button>
           </div>
 
-          {/* Secondary CTA - More prominent */}
+          {/* Primary CTA */}
           <div className="flex justify-center animate-fade-in-delay-2">
             <button 
               onClick={handleCTAClick}
-              className="group px-10 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-3 font-semibold text-lg"
+              className="group px-12 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-3 font-semibold text-lg"
             >
+              <Zap className="w-6 h-6 group-hover:rotate-12 transition-transform duration-200" />
               <span>Try Now</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
             </button>
           </div>
 
-          {/* Feature highlights */}
-          <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto animate-fade-in-delay-2">
-            <div className="flex flex-col items-center p-4 bg-white/50 dark:bg-gray-800/50 rounded-xl backdrop-blur-sm">
-              <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center mb-3">
-                <Upload className="w-6 h-6 text-white" />
-              </div>
-              <h3 className="font-semibold text-gray-900 dark:text-white mb-1">Instant Upload</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-300 text-center">Upload any product image for immediate analysis</p>
+          {/* Stats or Trust Indicators */}
+          <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto animate-fade-in-delay-2">
+            <div className="text-center">
+              <div className="text-3xl font-bold text-gray-900 dark:text-white mb-2">95%+</div>
+              <div className="text-gray-600 dark:text-gray-300">Accuracy Rate</div>
             </div>
-            
-            <div className="flex flex-col items-center p-4 bg-white/50 dark:bg-gray-800/50 rounded-xl backdrop-blur-sm">
-              <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full flex items-center justify-center mb-3">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                </svg>
-              </div>
-              <h3 className="font-semibold text-gray-900 dark:text-white mb-1">AI Analysis</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-300 text-center">Advanced AI identifies ingredients and safety</p>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-gray-900 dark:text-white mb-2">10K+</div>
+              <div className="text-gray-600 dark:text-gray-300">Products Analyzed</div>
             </div>
-            
-            <div className="flex flex-col items-center p-4 bg-white/50 dark:bg-gray-800/50 rounded-xl backdrop-blur-sm">
-              <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-green-600 rounded-full flex items-center justify-center mb-3">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="font-semibold text-gray-900 dark:text-white mb-1">Safety Ratings</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-300 text-center">Get comprehensive safety scores and insights</p>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-gray-900 dark:text-white mb-2">&lt;3s</div>
+              <div className="text-gray-600 dark:text-gray-300">Analysis Time</div>
             </div>
           </div>
         </div>
