@@ -43,11 +43,14 @@ const Hero: React.FC = () => {
             </button>
           </div>
 
-          {/* Upload Icon Animation */}
-          <div className="flex justify-center animate-bounce">
-            <div className="p-4 bg-white dark:bg-gray-800 rounded-full shadow-lg">
-              <Upload className="w-8 h-8 text-blue-600" />
-            </div>
+          {/* Try Now Button */}
+          <div className="flex justify-center">
+            <button 
+              onClick={handleCTAClick}
+              className="px-8 py-4 bg-white dark:bg-gray-800 text-gray-900 dark:text-white border-2 border-gray-200 dark:border-gray-700 rounded-xl hover:shadow-xl transform hover:scale-105 transition-all duration-300 font-semibold"
+            >
+              Try Now
+            </button>
           </div>
         </div>
       </div>
