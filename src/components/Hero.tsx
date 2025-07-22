@@ -1,5 +1,5 @@
 import React from 'react';
-import { Upload, Camera, ArrowRight } from 'lucide-react';
+import { Upload, Camera, ArrowRight, Sparkles, Zap, Shield } from 'lucide-react';
 
 const Hero: React.FC = () => {
   const handleCTAClick = () => {
@@ -7,58 +7,102 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-900 dark:to-gray-800 h-screen flex items-center justify-center">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
-      
-      {/* Floating Elements */}
-      <div className="absolute top-20 left-10 w-16 h-16 bg-blue-200 dark:bg-blue-900 rounded-full opacity-20 animate-float"></div>
-      <div className="absolute bottom-20 right-10 w-12 h-12 bg-purple-200 dark:bg-purple-900 rounded-full opacity-20 animate-float-delay"></div>
-      <div className="absolute top-1/2 right-20 w-8 h-8 bg-pink-200 dark:bg-pink-900 rounded-full opacity-20 animate-float-delay-2"></div>
-      
-      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        {/* Hero Title */}
-        <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-6 animate-fade-in">
-          <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-            AI Product Analysis
-          </span>
-        </h1>
+    <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 h-screen flex items-center justify-center">
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0">
+        {/* Gradient Orbs */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-pink-500/10 rounded-full blur-2xl animate-pulse delay-500"></div>
+        
+        {/* Floating Particles */}
+        <div className="absolute top-20 left-20 w-2 h-2 bg-blue-400 rounded-full animate-float opacity-60"></div>
+        <div className="absolute top-40 right-32 w-3 h-3 bg-purple-400 rounded-full animate-float-delay opacity-40"></div>
+        <div className="absolute bottom-32 left-16 w-2 h-2 bg-pink-400 rounded-full animate-float-delay-2 opacity-50"></div>
+        <div className="absolute bottom-20 right-20 w-2 h-2 bg-blue-300 rounded-full animate-float opacity-70"></div>
+        
+        {/* Grid Pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
+      </div>
 
-        {/* Hero Subtitle */}
-        <p className="text-xl sm:text-2xl text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed animate-fade-in-delay">
-          Upload product images to get detailed insights, safety ratings, and ingredient analysis.
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
+        {/* Badge */}
+        <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-8 animate-fade-in">
+          <Sparkles className="w-4 h-4 text-yellow-400" />
+          <span className="text-white/90 text-sm font-medium">AI-Powered Product Intelligence</span>
+        </div>
+
+        {/* Main Title with Unique Typography */}
+        <div className="mb-8 animate-fade-in-delay">
+          <h1 className="text-6xl sm:text-7xl lg:text-8xl font-black text-white mb-4 leading-tight">
+            <span className="block bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+              Decode
+            </span>
+            <span className="block text-white/90 text-4xl sm:text-5xl lg:text-6xl font-light">
+              Every Product
+            </span>
+          </h1>
+        </div>
+
+        {/* Subtitle with Typewriter Effect */}
+        <p className="text-xl sm:text-2xl text-white/80 mb-12 max-w-3xl mx-auto leading-relaxed animate-fade-in-delay-2">
+          Transform any product image into comprehensive insights with our advanced AI analysis engine
         </p>
 
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 animate-fade-in-delay-2">
+        {/* Interactive CTA Section */}
+        <div className="flex flex-col items-center space-y-8 animate-fade-in-delay-2">
+          {/* Primary CTA */}
           <button 
             onClick={handleCTAClick}
-            className="group px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-3 w-full sm:w-auto min-w-[240px]"
+            className="group relative px-12 py-4 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white rounded-2xl font-bold text-lg overflow-hidden transform hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-purple-500/25"
           >
-            <Upload className="w-5 h-5 group-hover:scale-110 transition-transform duration-200" />
-            <span className="font-semibold">Upload Product Images</span>
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div className="relative flex items-center space-x-3">
+              <Zap className="w-6 h-6 group-hover:rotate-12 transition-transform duration-300" />
+              <span>Start Analysis</span>
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+            </div>
           </button>
-          
-          <button 
-            onClick={handleCTAClick}
-            className="group px-8 py-4 bg-white dark:bg-gray-800 text-gray-900 dark:text-white border-2 border-gray-200 dark:border-gray-700 rounded-xl hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-3 w-full sm:w-auto min-w-[240px]"
-          >
-            <Camera className="w-5 h-5 group-hover:scale-110 transition-transform duration-200" />
-            <span className="font-semibold">Use Camera</span>
-          </button>
+
+          {/* Secondary Actions */}
+          <div className="flex flex-col sm:flex-row gap-4">
+            <button 
+              onClick={handleCTAClick}
+              className="group px-8 py-3 bg-white/10 backdrop-blur-sm border border-white/20 text-white rounded-xl hover:bg-white/20 transition-all duration-300 flex items-center space-x-3"
+            >
+              <Upload className="w-5 h-5 group-hover:scale-110 transition-transform duration-200" />
+              <span>Upload Image</span>
+            </button>
+            
+            <button 
+              onClick={handleCTAClick}
+              className="group px-8 py-3 bg-white/10 backdrop-blur-sm border border-white/20 text-white rounded-xl hover:bg-white/20 transition-all duration-300 flex items-center space-x-3"
+            >
+              <Camera className="w-5 h-5 group-hover:scale-110 transition-transform duration-200" />
+              <span>Use Camera</span>
+            </button>
+          </div>
         </div>
 
-        {/* Primary CTA */}
-        <div className="flex justify-center animate-fade-in-delay-2">
-          <button 
-            onClick={handleCTAClick}
-            className="group px-12 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-3 font-semibold text-lg"
-          >
-            <span>Try Now</span>
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
-          </button>
+        {/* Trust Indicators */}
+        <div className="flex flex-wrap justify-center items-center gap-8 mt-16 animate-fade-in-delay-2">
+          <div className="flex items-center space-x-2 text-white/60">
+            <Shield className="w-5 h-5 text-green-400" />
+            <span className="text-sm">99.9% Accurate</span>
+          </div>
+          <div className="flex items-center space-x-2 text-white/60">
+            <Zap className="w-5 h-5 text-yellow-400" />
+            <span className="text-sm">Instant Results</span>
+          </div>
+          <div className="flex items-center space-x-2 text-white/60">
+            <Sparkles className="w-5 h-5 text-purple-400" />
+            <span className="text-sm">AI-Powered</span>
+          </div>
         </div>
       </div>
+
+      {/* Bottom Gradient Fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-slate-900 to-transparent"></div>
     </section>
   );
 };
